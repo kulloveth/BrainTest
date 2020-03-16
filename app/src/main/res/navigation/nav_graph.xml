@@ -9,7 +9,14 @@
         android:id="@+id/chooseSignInMethodFragment"
         android:name="kulloveth.developer.com.braintest.ui.ChooseSignInMethodFragment"
         android:label="fragment_choose_sign_in_method"
-        tools:layout="@layout/fragment_choose_sign_in_method" />
+        tools:layout="@layout/fragment_choose_sign_in_method">
+        <action
+            android:id="@+id/action_chooseSignInMethodFragment_to_gmailSignIn"
+            app:destination="@id/gmailSignIn" />
+        <action
+            android:id="@+id/action_chooseSignInMethodFragment_to_emailSignIn"
+            app:destination="@id/emailSignIn" />
+    </fragment>
     <fragment
         android:id="@+id/gmailSignIn"
         android:name="kulloveth.developer.com.braintest.ui.GmailSignIn"
