@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/chooseSignInMethodFragment">
 
+    <fragment
+        android:id="@+id/chooseSignInMethodFragment"
+        android:name="kulloveth.developer.com.braintest.ui.ChooseSignInMethodFragment"
+        android:label="fragment_choose_sign_in_method"
+        tools:layout="@layout/fragment_choose_sign_in_method" />
+    <fragment
+        android:id="@+id/gmailSignIn"
+        android:name="kulloveth.developer.com.braintest.ui.GmailSignIn"
+        android:label="fragment_gmail_sign_in"
+        tools:layout="@layout/fragment_gmail_sign_in" />
+    <fragment
+        android:id="@+id/emailSignIn"
+        android:name="kulloveth.developer.com.braintest.ui.EmailSignIn"
+        android:label="fragment_email_sign_in"
+        tools:layout="@layout/fragment_email_sign_in" />
 </navigation>
