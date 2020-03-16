@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".ui.ChooseSignInMethodFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -22,7 +23,7 @@
         android:gravity="center_horizontal"
         android:text="@string/brain_test"
         android:textColor="@android:color/black"
-        android:textSize="32sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline" />
 
@@ -30,15 +31,16 @@
         android:id="@+id/gmailOption"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_60dp"
+        android:background="@drawable/google_background"
         android:layout_margin="@dimen/dimens_16dp"
         android:drawableStart="@drawable/gmail"
         android:drawableLeft="@drawable/gmail"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
+        android:textSize="18sp"
         android:paddingLeft="@dimen/dimens_60dp"
         android:text="Sign in with Google"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appname" />
@@ -48,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_60dp"
         android:layout_margin="@dimen/dimens_16dp"
-        android:background="#392891"
+        android:background="@color/purpl"
         android:drawableStart="@drawable/ic_email_black_24dp"
         android:drawableLeft="@drawable/ic_email_black_24dp"
         android:drawablePadding="8dp"
@@ -56,7 +58,7 @@
         android:paddingLeft="@dimen/dimens_60dp"
         android:text="Sign in with Email"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/gmailOption" />
