@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/gmailSignIn"
-        android:name="kulloveth.developer.com.braintest.ui.GmailSignIn"
+        android:name="kulloveth.developer.com.braintest.ui.auth.GmailSignIn"
         android:label="fragment_gmail_sign_in"
         tools:layout="@layout/fragment_gmail_sign_in" />
     <fragment
         android:id="@+id/emailSignIn"
-        android:name="kulloveth.developer.com.braintest.ui.EmailSignIn"
+        android:name="kulloveth.developer.com.braintest.ui.auth.EmailSignIn"
         android:label="fragment_email_sign_in"
         tools:layout="@layout/fragment_email_sign_in" />
 </navigation>

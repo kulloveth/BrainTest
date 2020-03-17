@@ -1,6 +1,7 @@
 package kulloveth.developer.com.braintest.ui.auth
 
 
+import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
@@ -9,6 +10,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.repository.UserRepository
+import kulloveth.developer.com.braintest.ui.game.GameActivity
 
 class AuthViewModel(private val repository: UserRepository) : ViewModel() {
 
@@ -62,12 +64,12 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
         view.findNavController().navigate(R.id.action_chooseSignInMethodFragment_to_emailSignIn)
     }
 
-//
-//    fun goToSignIn(view: View) {
-//        Intent(view.context, LoginActivity::class.java).also {
-//            view.context.startActivity(it)
-//        }
-//    }
+
+    fun goToSignIn(view: View) {
+        Intent(view.context, GameActivity::class.java).also {
+            view.context.startActivity(it)
+        }
+    }
 
     fun signOut() = repository.signOutUser()
 
