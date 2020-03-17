@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/gmailSignIn"
-        android:name="kulloveth.developer.com.braintest.ui.auth.GmailSignIn"
+        android:name="kulloveth.developer.com.braintest.ui.auth.GmailSignInFragment"
         android:label="fragment_gmail_sign_in"
         tools:layout="@layout/fragment_gmail_sign_in" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/emailSignIn"
-        android:name="kulloveth.developer.com.braintest.ui.auth.EmailSignIn"
+        android:name="kulloveth.developer.com.braintest.ui.auth.EmailSignInFragment"
         android:label="fragment_email_sign_in"
         tools:layout="@layout/fragment_email_sign_in" >
         <action
@@ -37,12 +37,12 @@
     </fragment>
     <fragment
         android:id="@+id/emailSignUp"
-        android:name="kulloveth.developer.com.braintest.ui.auth.EmailSignUp"
+        android:name="kulloveth.developer.com.braintest.ui.auth.EmailSignUpFragment"
         android:label="fragment_email_sign_up"
         tools:layout="@layout/fragment_email_sign_up" />
     <fragment
         android:id="@+id/gmailSignUp"
-        android:name="kulloveth.developer.com.braintest.ui.auth.GmailSignUp"
+        android:name="kulloveth.developer.com.braintest.ui.auth.GmailSignUpFragment"
         android:label="fragment_gmail_sign_up"
         tools:layout="@layout/fragment_gmail_sign_up" />
 </navigation>

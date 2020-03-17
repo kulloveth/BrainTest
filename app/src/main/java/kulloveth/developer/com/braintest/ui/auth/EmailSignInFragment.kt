@@ -10,15 +10,19 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_email_sign_in.*
 import kulloveth.developer.com.braintest.R
+import kulloveth.developer.com.braintest.data.FirebaseSource
+import kulloveth.developer.com.braintest.data.repository.UserRepository
 import kulloveth.developer.com.braintest.databinding.FragmentEmailSignInBinding
 import kulloveth.developer.com.braintest.utils.startGameActivity
 
 /**
  * A simple [Fragment] subclass.
  */
-class EmailSignIn : Fragment(), AuthListener {
+class EmailSignInFragment : Fragment(), AuthListener {
 
     private lateinit var factory: AuthViewModelFactory
+    var firebaseSource =FirebaseSource()
+    var repository = UserRepository(firebaseSource)
     private lateinit var viewModel: AuthViewModel
     private lateinit var binding: FragmentEmailSignInBinding
     override fun onCreateView(
@@ -27,6 +31,7 @@ class EmailSignIn : Fragment(), AuthListener {
     ): View? {
         // Inflate the layout for this fragment
 
+        factory = AuthViewModelFactory(repository)
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_email_sign_in, container, false)
         viewModel = ViewModelProvider(requireActivity(), factory).get(AuthViewModel::class.java)

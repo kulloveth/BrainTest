@@ -12,7 +12,7 @@ import kulloveth.developer.com.braintest.R
 /**
  * A simple [Fragment] subclass.
  */
-class GmailSignUp : Fragment() {
+class GmailSignUpFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
