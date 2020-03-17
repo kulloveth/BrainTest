@@ -1,7 +1,6 @@
 package kulloveth.developer.com.braintest.ui.auth
 
 
-import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
@@ -10,7 +9,6 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.repository.UserRepository
-import kulloveth.developer.com.braintest.ui.game.GameActivity
 
 class AuthViewModel(private val repository: UserRepository) : ViewModel() {
 
