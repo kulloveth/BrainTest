@@ -21,10 +21,28 @@
         android:id="@+id/gmailSignIn"
         android:name="kulloveth.developer.com.braintest.ui.auth.GmailSignIn"
         android:label="fragment_gmail_sign_in"
-        tools:layout="@layout/fragment_gmail_sign_in" />
+        tools:layout="@layout/fragment_gmail_sign_in" >
+        <action
+            android:id="@+id/action_gmailSignIn_to_gmailSignUp"
+            app:destination="@id/gmailSignUp" />
+    </fragment>
     <fragment
         android:id="@+id/emailSignIn"
         android:name="kulloveth.developer.com.braintest.ui.auth.EmailSignIn"
         android:label="fragment_email_sign_in"
-        tools:layout="@layout/fragment_email_sign_in" />
+        tools:layout="@layout/fragment_email_sign_in" >
+        <action
+            android:id="@+id/action_emailSignIn_to_emailSignUp"
+            app:destination="@id/emailSignUp" />
+    </fragment>
+    <fragment
+        android:id="@+id/emailSignUp"
+        android:name="kulloveth.developer.com.braintest.ui.auth.EmailSignUp"
+        android:label="fragment_email_sign_up"
+        tools:layout="@layout/fragment_email_sign_up" />
+    <fragment
+        android:id="@+id/gmailSignUp"
+        android:name="kulloveth.developer.com.braintest.ui.auth.GmailSignUp"
+        android:label="fragment_gmail_sign_up"
+        tools:layout="@layout/fragment_gmail_sign_up" />
 </navigation>

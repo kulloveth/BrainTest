@@ -66,10 +66,9 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
 
 
     fun goToSignIn(view: View) {
-        Intent(view.context, GameActivity::class.java).also {
-            view.context.startActivity(it)
+        view.findNavController().navigate(R.id.action_chooseSignInMethodFragment_to_emailSignIn)
         }
-    }
+
 
     fun signOut() = repository.signOutUser()
 

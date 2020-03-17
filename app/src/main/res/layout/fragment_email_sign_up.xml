@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purpl"
-    tools:context=".ui.auth.EmailSignIn">
+    tools:context=".ui.auth.EmailSignUp">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -21,9 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Email SignIn"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:text="Email Signup"
         app:layout_constraintTop_toTopOf="@id/guideline" />
 
     <androidx.cardview.widget.CardView
@@ -41,7 +38,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimens_60dp"
             android:layout_marginStart="@dimen/dimens_16dp"
-            android:layout_marginTop="@dimen/dimens_60dp"
             android:layout_marginEnd="@dimen/dimens_16dp"
             android:hint="Enter your email">
 
@@ -59,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimens_60dp"
             android:layout_marginStart="@dimen/dimens_16dp"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="@dimen/dimens_16dp"
             android:hint="Enter your password">
 
@@ -73,20 +69,17 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dimens_60dp"
+            android:text="Sign Up"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="210dp"
-            android:text="Sign In"
-            app:backgroundTint="@color/purpl" />
+            android:layout_marginTop="150dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="220dp"
+            android:textSize="18dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="280dp"
-            android:text="Not registered Sign up here"
-            android:textColor="@android:color/black"
-            android:textSize="18dp" />
+            android:text="Already have an account sign in here"/>
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
