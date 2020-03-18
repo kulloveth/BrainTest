@@ -64,7 +64,7 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
 
 
     fun goToSignIn(view: View) {
-        view.findNavController().navigate(R.id.action_chooseSignInMethodFragment_to_emailSignIn)
+        view.findNavController().navigate(R.id.action_emailSignUp_to_emailSignIn)
         }
 
 

@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_gmailSignIn_to_gmailSignUp"
             app:destination="@id/gmailSignUp" />
+        <action
+            android:id="@+id/action_gmailSignIn_to_gameFragment"
+            app:destination="@id/gameFragment" />
     </fragment>
     <fragment
         android:id="@+id/emailSignIn"
@@ -34,15 +37,37 @@
         <action
             android:id="@+id/action_emailSignIn_to_emailSignUp"
             app:destination="@id/emailSignUp" />
+        <action
+            android:id="@+id/action_emailSignIn_to_gameFragment"
+            app:destination="@id/gameFragment" />
     </fragment>
     <fragment
         android:id="@+id/emailSignUp"
         android:name="kulloveth.developer.com.braintest.ui.auth.EmailSignUpFragment"
         android:label="fragment_email_sign_up"
-        tools:layout="@layout/fragment_email_sign_up" />
+        tools:layout="@layout/fragment_email_sign_up" >
+        <action
+            android:id="@+id/action_emailSignUp_to_emailSignIn"
+            app:destination="@id/emailSignIn" />
+        <action
+            android:id="@+id/action_emailSignUp_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gmailSignUp"
         android:name="kulloveth.developer.com.braintest.ui.auth.GmailSignUpFragment"
         android:label="fragment_gmail_sign_up"
-        tools:layout="@layout/fragment_gmail_sign_up" />
+        tools:layout="@layout/fragment_gmail_sign_up" >
+        <action
+            android:id="@+id/action_gmailSignUp_to_gmailSignIn"
+            app:destination="@id/gmailSignIn" />
+        <action
+            android:id="@+id/action_gmailSignUp_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="kulloveth.developer.com.braintest.ui.game.GameFragment"
+        android:label="activity_game"
+        tools:layout="@layout/fragment_game" />
 </navigation>

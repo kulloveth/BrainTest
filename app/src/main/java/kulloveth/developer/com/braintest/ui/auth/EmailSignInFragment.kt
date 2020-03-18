@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_email_sign_in.*
 import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.FirebaseSource
 import kulloveth.developer.com.braintest.data.repository.UserRepository
 import kulloveth.developer.com.braintest.databinding.FragmentEmailSignInBinding
-import kulloveth.developer.com.braintest.utils.startGameActivity
+import kulloveth.developer.com.braintest.utils.startGameFragment
 
 /**
  * A simple [Fragment] subclass.
@@ -21,7 +22,7 @@ import kulloveth.developer.com.braintest.utils.startGameActivity
 class EmailSignInFragment : Fragment(), AuthListener {
 
     private lateinit var factory: AuthViewModelFactory
-    var firebaseSource =FirebaseSource()
+    var firebaseSource = FirebaseSource()
     var repository = UserRepository(firebaseSource)
     private lateinit var viewModel: AuthViewModel
     private lateinit var binding: FragmentEmailSignInBinding
@@ -46,17 +47,19 @@ class EmailSignInFragment : Fragment(), AuthListener {
     }
 
     override fun onSuccess() {
-        progressbar.visibility = View.VISIBLE
+        progressbar.visibility = View.GONE
+        view?.startGameFragment()
     }
 
     override fun onFailure(message: String) {
-        progressbar.visibility = View.VISIBLE
+        progressbar.visibility = View.GONE
+        view?.let { Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show() }
     }
 
     override fun onStart() {
         super.onStart()
         viewModel.user?.let {
-            requireActivity().startGameActivity()
+            view?.startGameFragment()
         }
     }
 }
