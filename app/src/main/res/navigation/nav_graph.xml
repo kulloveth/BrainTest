@@ -11,22 +11,10 @@
         android:label="fragment_choose_sign_in_method"
         tools:layout="@layout/fragment_choose_sign_in_method">
         <action
-            android:id="@+id/action_chooseSignInMethodFragment_to_gmailSignIn"
-            app:destination="@id/gmailSignIn" />
-        <action
             android:id="@+id/action_chooseSignInMethodFragment_to_emailSignIn"
             app:destination="@id/emailSignIn" />
-    </fragment>
-    <fragment
-        android:id="@+id/gmailSignIn"
-        android:name="kulloveth.developer.com.braintest.ui.auth.GmailSignInFragment"
-        android:label="fragment_gmail_sign_in"
-        tools:layout="@layout/fragment_gmail_sign_in" >
         <action
-            android:id="@+id/action_gmailSignIn_to_gmailSignUp"
-            app:destination="@id/gmailSignUp" />
-        <action
-            android:id="@+id/action_gmailSignIn_to_gameFragment"
+            android:id="@+id/action_chooseSignInMethodFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
     </fragment>
     <fragment
@@ -54,18 +42,6 @@
             app:destination="@id/gameFragment" />
     </fragment>
     <fragment
-        android:id="@+id/gmailSignUp"
-        android:name="kulloveth.developer.com.braintest.ui.auth.GmailSignUpFragment"
-        android:label="fragment_gmail_sign_up"
-        tools:layout="@layout/fragment_gmail_sign_up" >
-        <action
-            android:id="@+id/action_gmailSignUp_to_gmailSignIn"
-            app:destination="@id/gmailSignIn" />
-        <action
-            android:id="@+id/action_gmailSignUp_to_gameFragment"
-            app:destination="@id/gameFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/gameFragment"
         android:name="kulloveth.developer.com.braintest.ui.game.GameFragment"
         android:label="activity_game"
@@ -73,9 +49,6 @@
         <action
             android:id="@+id/action_gameFragment_to_emailSignIn"
             app:destination="@id/emailSignIn" />
-        <action
-            android:id="@+id/action_gameFragment_to_gmailSignIn"
-            app:destination="@id/gmailSignIn" />
         <action
             android:id="@+id/action_gameFragment_to_chooseSignInMethodFragment"
             app:destination="@id/chooseSignInMethodFragment" />

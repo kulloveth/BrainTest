@@ -6,6 +6,10 @@ import io.reactivex.Completable
 class FirebaseSource {
 
 
+//    private   val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//        .requestIdToken(getString(R.string.default_web_client_id))
+//        .requestEmail()
+//        .build()
 
     private val firebaseAuth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
@@ -35,6 +39,10 @@ class FirebaseSource {
                 }
             }
         }
+    }
+
+    fun googleSignup() = Completable.create { notify ->
+
     }
 
     fun signOut() = firebaseAuth.signOut()
