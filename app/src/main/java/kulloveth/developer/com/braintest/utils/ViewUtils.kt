@@ -8,8 +8,12 @@ import kulloveth.developer.com.braintest.MainActivity
 import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.ui.game.GameFragment
 
-fun View.startGameFragment() {
-this.findNavController().navigate(R.id.action_emailSignIn_to_gameFragment)
+fun View.signUptoGameFragment() {
+this.findNavController().navigate(R.id.action_emailSignUp_to_gameFragment)
+}
+
+fun View.signIntoGameFragment() {
+    this.findNavController().navigate(R.id.action_emailSignIn_to_gameFragment)
 }
 
 fun Context.startMainActivity() {

@@ -69,5 +69,15 @@
         android:id="@+id/gameFragment"
         android:name="kulloveth.developer.com.braintest.ui.game.GameFragment"
         android:label="activity_game"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_gameFragment_to_emailSignIn"
+            app:destination="@id/emailSignIn" />
+        <action
+            android:id="@+id/action_gameFragment_to_gmailSignIn"
+            app:destination="@id/gmailSignIn" />
+        <action
+            android:id="@+id/action_gameFragment_to_chooseSignInMethodFragment"
+            app:destination="@id/chooseSignInMethodFragment" />
+    </fragment>
 </navigation>

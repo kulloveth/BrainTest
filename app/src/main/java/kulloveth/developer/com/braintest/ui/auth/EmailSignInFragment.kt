@@ -14,7 +14,7 @@ import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.FirebaseSource
 import kulloveth.developer.com.braintest.data.repository.UserRepository
 import kulloveth.developer.com.braintest.databinding.FragmentEmailSignInBinding
-import kulloveth.developer.com.braintest.utils.startGameFragment
+import kulloveth.developer.com.braintest.utils.signIntoGameFragment
 
 /**
  * A simple [Fragment] subclass.
@@ -48,7 +48,7 @@ class EmailSignInFragment : Fragment(), AuthListener {
 
     override fun onSuccess() {
         progressbar.visibility = View.GONE
-        view?.startGameFragment()
+        view?.signIntoGameFragment()
     }
 
     override fun onFailure(message: String) {
@@ -59,7 +59,7 @@ class EmailSignInFragment : Fragment(), AuthListener {
     override fun onStart() {
         super.onStart()
         viewModel.user?.let {
-            view?.startGameFragment()
+            view?.signIntoGameFragment()
         }
     }
 }

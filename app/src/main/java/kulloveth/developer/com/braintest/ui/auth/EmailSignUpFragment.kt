@@ -1,7 +1,6 @@
 package kulloveth.developer.com.braintest.ui.auth
 
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,15 +8,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_email_sign_up.*
 import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.FirebaseSource
 import kulloveth.developer.com.braintest.data.repository.UserRepository
 import kulloveth.developer.com.braintest.databinding.FragmentEmailSignUpBinding
-import kulloveth.developer.com.braintest.ui.game.GameFragment
-import kulloveth.developer.com.braintest.utils.startGameFragment
+import kulloveth.developer.com.braintest.utils.signUptoGameFragment
+
 
 /**
  * A simple [Fragment] subclass.
@@ -45,15 +43,12 @@ class EmailSignUpFragment : Fragment(), AuthListener {
 
     override fun onStarted() {
         progressbar.visibility = View.VISIBLE
-        Intent(requireActivity(), GameFragment::class.java).also {
-            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(it)
-        }
+        view?.signUptoGameFragment()
     }
 
     override fun onSuccess() {
         progressbar.visibility = View.GONE
-       view?.findNavController()!!.navigate(R.id.action_emailSignUp_to_gameFragment)
+        view?.signUptoGameFragment()
     }
 
     override fun onFailure(message: String) {
