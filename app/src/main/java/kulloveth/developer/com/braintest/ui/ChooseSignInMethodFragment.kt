@@ -1,6 +1,7 @@
 package kulloveth.developer.com.braintest.ui
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -38,4 +39,8 @@ class ChooseSignInMethodFragment : Fragment() {
     }
 
 }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+    }
 }

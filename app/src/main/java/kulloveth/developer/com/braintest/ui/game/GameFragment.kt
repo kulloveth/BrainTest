@@ -14,8 +14,7 @@ import kulloveth.developer.com.braintest.databinding.FragmentGameBinding
 
 class GameFragment : Fragment() {
     private lateinit var factory: GameViewModelFactory
-    var firebaseSource = FirebaseSource()
-    var repository = UserRepository(firebaseSource)
+    var repository = UserRepository()
     private lateinit var viewModel: GameViewModel
     private lateinit var binding: FragmentGameBinding
     override fun onCreateView(

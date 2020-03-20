@@ -23,8 +23,7 @@ import kulloveth.developer.com.braintest.utils.signUptoGameFragment
 class EmailSignUpFragment : Fragment(), AuthListener {
 
     private lateinit var factory: AuthViewModelFactory
-    var firebaseSource = FirebaseSource()
-    var repository = UserRepository(firebaseSource)
+    var repository = UserRepository()
     private lateinit var viewModel: AuthViewModel
     private lateinit var binding: FragmentEmailSignUpBinding
     override fun onCreateView(

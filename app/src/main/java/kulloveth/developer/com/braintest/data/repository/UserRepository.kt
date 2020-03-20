@@ -2,13 +2,13 @@ package kulloveth.developer.com.braintest.data.repository
 
 import kulloveth.developer.com.braintest.data.FirebaseSource
 
-class UserRepository(private val firebaseSource: FirebaseSource) {
+class UserRepository {
 
-    fun signInUser(email: String, password: String) = firebaseSource.signIn(email, password)
+    fun signInUser(email: String, password: String) = FirebaseSource.signIn(email, password)
 
-    fun signupUser(email: String, password: String) = firebaseSource.signUp(email, password)
+    fun signupUser(email: String, password: String) = FirebaseSource.signUp(email, password)
 
-    fun signOutUser() = firebaseSource.signOut()
+    fun signOutUser() = FirebaseSource.signOut()
 
-    fun currentUser() = firebaseSource.currenUser()
+    fun currentUser() = FirebaseSource.currenUser()
 }
