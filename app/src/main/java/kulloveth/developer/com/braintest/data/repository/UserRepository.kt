@@ -1,5 +1,7 @@
 package kulloveth.developer.com.braintest.data.repository
 
+import android.app.Activity
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import kulloveth.developer.com.braintest.data.FirebaseSource
 
 class UserRepository {
@@ -11,4 +13,8 @@ class UserRepository {
     fun signOutUser() = FirebaseSource.signOut()
 
     fun currentUser() = FirebaseSource.currenUser()
+    fun signInwithGmail(
+        activity: Activity,
+        googleSignInAccount: GoogleSignInAccount
+    ) = FirebaseSource.firebaseAuthWithGoogle(activity, googleSignInAccount)
 }

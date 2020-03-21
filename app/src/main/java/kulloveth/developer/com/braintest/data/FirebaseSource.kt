@@ -1,5 +1,6 @@
 package kulloveth.developer.com.braintest.data
 
+import android.app.Activity
 import android.content.Context
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -8,7 +9,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import io.reactivex.Completable
-import kulloveth.developer.com.braintest.MainActivity
 import kulloveth.developer.com.braintest.R
 import java.lang.ref.WeakReference
 
@@ -24,12 +24,14 @@ class FirebaseSource {
     companion object {
         private var firebaseSource: FirebaseSource? = null
         private var firebaseAuth: FirebaseAuth? = null
-        private var mClient: WeakReference<GoogleSignInClient>? = null
+        var RC_SIGN_IN: Int = 700
+        var mClient: GoogleSignInClient? = null
         fun initializeFirebase() {
             if (firebaseSource == null) {
                 firebaseSource = FirebaseSource()
                 firebaseAuth = FirebaseAuth.getInstance()
             }
+            //initializeGoogleSignin()
         }
 
         fun initializeGoogleSignin(context: Context) {
@@ -37,15 +39,15 @@ class FirebaseSource {
                 .requestIdToken(context.getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build()
-            mClient = WeakReference(GoogleSignIn.getClient(context, gso))
+            mClient = GoogleSignIn.getClient(context, gso)
         }
 
         fun getGoogleClient(): GoogleSignInClient? {
-            return mClient?.get()
+            return mClient
         }
 
         fun firebaseAuthWithGoogle(
-            activity: MainActivity,
+            activity: Activity,
             googleSignInAccount: GoogleSignInAccount
         ) = Completable.create { notify ->
             val authCredential = GoogleAuthProvider.getCredential(googleSignInAccount.idToken, null)
@@ -86,16 +88,15 @@ class FirebaseSource {
             }
         }
 
-        fun googleSignup() = Completable.create { notify ->
-
-        }
 
         fun signOut() {
             firebaseAuth?.signOut()
-            getGoogleClient()?.signOut()
-
-            fun currenUser() = firebaseAuth!!.currentUser
+            mClient?.signOut()
         }
 
+        fun currenUser() = firebaseAuth?.currentUser
 
     }
+
+
+}

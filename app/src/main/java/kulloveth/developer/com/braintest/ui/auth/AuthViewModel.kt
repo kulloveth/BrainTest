@@ -1,12 +1,15 @@
 package kulloveth.developer.com.braintest.ui.auth
 
 
+import android.app.Activity
 import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kulloveth.developer.com.braintest.MainActivity
 import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.repository.UserRepository
 
@@ -58,6 +61,23 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
         disposables.add(disposable)
     }
 
+    fun sginwithGmail(
+        activity: Activity,
+        googleSignInAccount: GoogleSignInAccount
+    ) {
+        authListener?.onStarted()
+        val disposable = repository.signInwithGmail(
+            activity,
+            googleSignInAccount
+        ).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ authListener?.onSuccess() }, {
+                authListener?.onFailure(it.message!!)
+
+            })
+        disposables.add(disposable)
+    }
+
     fun goToSignup(view: View) {
         view.findNavController().navigate(R.id.action_emailSignIn_to_emailSignUp)
     }
@@ -65,7 +85,7 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun goToSignIn(view: View) {
         view.findNavController().navigate(R.id.action_emailSignUp_to_emailSignIn)
-        }
+    }
 
 
     fun signOut() = repository.signOutUser()
