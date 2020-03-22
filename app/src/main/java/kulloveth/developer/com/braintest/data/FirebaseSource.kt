@@ -7,6 +7,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import io.reactivex.Completable
 import kulloveth.developer.com.braintest.R
@@ -47,7 +48,6 @@ class FirebaseSource {
         }
 
         fun firebaseAuthWithGoogle(
-            activity: Activity,
             googleSignInAccount: GoogleSignInAccount
         ) = Completable.create { notify ->
             val authCredential = GoogleAuthProvider.getCredential(googleSignInAccount.idToken, null)

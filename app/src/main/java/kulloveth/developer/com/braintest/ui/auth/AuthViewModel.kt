@@ -62,12 +62,10 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
     }
 
     fun sginwithGmail(
-        activity: Activity,
         googleSignInAccount: GoogleSignInAccount
     ) {
         authListener?.onStarted()
         val disposable = repository.signInwithGmail(
-            activity,
             googleSignInAccount
         ).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

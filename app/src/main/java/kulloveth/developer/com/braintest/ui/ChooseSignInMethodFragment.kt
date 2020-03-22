@@ -66,7 +66,7 @@ class ChooseSignInMethodFragment : Fragment(), AuthListener {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
                 account?.let {
-                    viewModel.sginwithGmail(requireActivity(), account)
+                    viewModel.sginwithGmail(account)
 
                     view?.findNavController()?.navigate(R.id.action_chooseSignInMethodFragment_to_gameFragment)
 
@@ -99,7 +99,6 @@ class ChooseSignInMethodFragment : Fragment(), AuthListener {
     }
 
     override fun onSuccess() {
-        view?.findNavController()?.navigate(R.id.action_chooseSignInMethodFragment_to_gameFragment)
     }
 
     override fun onFailure(message: String) {

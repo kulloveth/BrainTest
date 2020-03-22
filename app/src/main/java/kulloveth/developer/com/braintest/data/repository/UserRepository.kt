@@ -14,7 +14,6 @@ class UserRepository {
 
     fun currentUser() = FirebaseSource.currenUser()
     fun signInwithGmail(
-        activity: Activity,
         googleSignInAccount: GoogleSignInAccount
-    ) = FirebaseSource.firebaseAuthWithGoogle(activity, googleSignInAccount)
+    ) = FirebaseSource.firebaseAuthWithGoogle(googleSignInAccount)
 }
