@@ -1,9 +1,10 @@
 package kulloveth.developer.com.braintest.data.models
 
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class Questions(
-    val answerList:List<Answers>,
-    val _id:String,
-    val question:String
-):Serializable
+    @SerializedName("answers") val answers: List<Answers>,
+    @SerializedName("_id") val _id: String,
+    @SerializedName("question") val question: String
+    ) : Serializable
