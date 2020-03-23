@@ -1,6 +1,6 @@
 package kulloveth.developer.com.braintest.data
 
-import io.reactivex.Single
+import io.reactivex.Flowable
 import kulloveth.developer.com.braintest.data.models.Quiz
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -10,7 +10,7 @@ import retrofit2.http.GET
 
 interface RetrofitService {
     @GET("quizes")
-    fun fetchQuiz(): Single<Response<Quiz>>
+    fun fetchQuiz(): Flowable<Response<Quiz>>
 
     companion object {
         fun getRetrofitInstance(): RetrofitService {
