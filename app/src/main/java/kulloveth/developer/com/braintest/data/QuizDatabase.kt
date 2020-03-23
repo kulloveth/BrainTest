@@ -1,13 +1,11 @@
 package kulloveth.developer.com.braintest.data
 
-import android.app.Application
-import androidx.room.Database
+import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import kulloveth.developer.com.braintest.data.models.Quiz
 import kulloveth.developer.com.braintest.data.models.QuizDao
 
-@Database(entities = [Quiz::class], version = 1)
+
 abstract class QuizDatabase : RoomDatabase() {
 
     abstract fun quizDao(): QuizDao
@@ -15,18 +13,26 @@ abstract class QuizDatabase : RoomDatabase() {
     companion object {
 
         @Volatile
-        private var INSTANCE: QuizDatabase? = null
+        var INSTANCE: QuizDatabase? = null
 
-        fun getInstance(application: Application): QuizDatabase =
-            INSTANCE ?: synchronized(this) {
-                INSTANCE ?: buildDatabase(application).also { INSTANCE = it }
+
+        fun getDatabase(context: Context): QuizDatabase {
+            val tempInstance = INSTANCE
+            if (tempInstance != null) {
+                return tempInstance
             }
-
-        private fun buildDatabase(application: Application) =
-            Room.databaseBuilder(
-                application,
-                QuizDatabase::class.java, "quiz-db"
-            )
-                .build()
+            synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    QuizDatabase::class.java,
+                    "quiz_database"
+                )
+                    .build()
+                INSTANCE = instance
+                return instance
+            }
+        }
     }
+
+
 }
