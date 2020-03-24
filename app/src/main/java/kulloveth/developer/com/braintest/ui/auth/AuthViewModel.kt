@@ -1,7 +1,6 @@
 package kulloveth.developer.com.braintest.ui.auth
 
 
-import android.app.Activity
 import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
@@ -9,7 +8,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kulloveth.developer.com.braintest.MainActivity
 import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.repository.UserRepository
 

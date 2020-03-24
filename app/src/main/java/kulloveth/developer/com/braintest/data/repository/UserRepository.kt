@@ -1,6 +1,8 @@
 package kulloveth.developer.com.braintest.data.repository
 
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,9 +19,12 @@ class UserRepository {
 
     fun signupUser(email: String, password: String) = FirebaseSource.signUp(email, password)
 
+
+
     fun signOutUser() = FirebaseSource.signOut()
 
     fun currentUser() = FirebaseSource.currenUser()
+
     fun signInwithGmail(
         googleSignInAccount: GoogleSignInAccount
     ) = FirebaseSource.firebaseAuthWithGoogle(googleSignInAccount)
