@@ -12,24 +12,23 @@
     </data>
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.game.GameFragment">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/appbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.Toolbar
-                android:background="@color/purpl"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/purpl">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -39,8 +38,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:textColor="@android:color/white"
                         android:text="@{viewmodel.user.email}"
+                        android:textColor="@android:color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -49,9 +48,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/dimens_16dp"
+                        android:onClick="@{(v)->viewmodel.signOut(v)}"
                         android:src="@drawable/ic_adjust_black_24dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:onClick="@{(v)->viewmodel.signOut(v)}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -60,74 +59,89 @@
         </com.google.android.material.appbar.AppBarLayout>
 
 
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginEnd="@dimen/dimens_16dp"
+            android:text="00:00"
+            android:layout_marginTop="@dimen/dimens_16dp"
+            app:layout_constraintBottom_toTopOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar" />
 
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/guideline"
+            android:orientation="horizontal"
             app:layout_constraintGuide_begin="200dp"
-            app:layout_constraintTop_toBottomOf="@id/appbar"
-            android:orientation="horizontal"/>
+            app:layout_constraintTop_toBottomOf="@id/appbar" />
 
         <TextView
             android:id="@+id/question"
-            app:layout_constraintTop_toBottomOf="@id/guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/dimens_16dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline" />
 
         <RadioGroup
             android:id="@+id/optionGroup"
             android:layout_width="match_parent"
-            android:visibility="invisible"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            app:layout_constraintTop_toBottomOf="@id/question"
-            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_height="wrap_content">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/question">
+
             <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
                 android:id="@+id/optionOne"
-                android:textSize="18sp"
-                android:checked="false"
-                android:text="option one"/>
-            <RadioButton
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="30dp"
+                android:checked="false"
+                android:text="option one"
+                android:textSize="18sp" />
+
+            <RadioButton
                 android:id="@+id/optionTwo"
-                android:textSize="18sp"
-                android:checked="false"
-                android:text="option one"/>
-            <RadioButton
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="30dp"
+                android:checked="false"
+                android:text="option one"
+                android:textSize="18sp" />
+
+            <RadioButton
                 android:id="@+id/optionThree"
-                android:textSize="18sp"
-                android:checked="false"
-                android:text="option one"/>
-            <RadioButton
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="30dp"
-                android:id="@+id/optionFour"
                 android:checked="false"
-                android:textSize="18sp"
-                android:text="option one"/>
+                android:text="option one"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/optionFour"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:checked="false"
+                android:text="option one"
+                android:textSize="18sp" />
 
         </RadioGroup>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/next"
             android:layout_marginTop="@dimen/dimens_16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/optionGroup"
-            app:layout_constraintEnd_toEndOf="parent"
             android:backgroundTint="@color/purpl"
-            android:text="NEXT"/>
+            android:text="NEXT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/optionGroup" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

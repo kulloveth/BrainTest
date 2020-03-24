@@ -10,7 +10,14 @@ import kulloveth.developer.com.braintest.data.repository.UserRepository
 
 class GameViewModel(val repository: UserRepository) : ViewModel() {
 
-    val question:String? = null
+    var count = 0
+    var oCount = 0
+    var result = 0
+    var quest: String? = null
+    var optionO: String? = null
+    var optionT: String? = null
+    var optionTh: String? = null
+    var optionF: String? = null
     fun fetchquiz(): LiveData<Quiz> {
         return repository.quizLiveData
     }
