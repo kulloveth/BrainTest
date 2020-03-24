@@ -52,5 +52,13 @@
         <action
             android:id="@+id/action_gameFragment_to_chooseSignInMethodFragment"
             app:destination="@id/chooseSignInMethodFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_quizSummaryFragment"
+            app:destination="@id/quizSummaryFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/quizSummaryFragment"
+        android:name="kulloveth.developer.com.braintest.ui.QuizSummaryFragment"
+        android:label="fragment_quiz_summary"
+        tools:layout="@layout/fragment_quiz_summary" />
 </navigation>
