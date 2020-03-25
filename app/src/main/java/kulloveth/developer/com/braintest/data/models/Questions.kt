@@ -7,7 +7,7 @@ import java.io.Serializable
 
 @Parcelize
 data class Questions(
-    @SerializedName("answers") val answers: List<Answers>,
+    @SerializedName("answers") val answers: ArrayList<Answers>,
     @SerializedName("_id") val _id: String,
     @SerializedName("question") val question: String
     ) : Parcelable

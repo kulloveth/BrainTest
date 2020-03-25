@@ -53,12 +53,26 @@
             android:id="@+id/action_gameFragment_to_chooseSignInMethodFragment"
             app:destination="@id/chooseSignInMethodFragment" />
         <action
-            android:id="@+id/action_gameFragment_to_quizSummaryFragment"
-            app:destination="@id/quizSummaryFragment" />
+            android:id="@+id/action_gameFragment_to_questionsFragment"
+            app:destination="@id/questionsFragment" />
     </fragment>
     <dialog
         android:id="@+id/quizSummaryFragment"
         android:name="kulloveth.developer.com.braintest.ui.QuizSummaryFragment"
         android:label="fragment_quiz_summary"
         tools:layout="@layout/fragment_quiz_summary" />
+    <fragment
+        android:id="@+id/questionsFragment"
+        android:name="kulloveth.developer.com.braintest.ui.game.QuestionsFragment"
+        android:label="fragment_questions"
+        tools:layout="@layout/fragment_questions">
+        <argument
+            android:name="question"
+            app:argType="kulloveth.developer.com.braintest.data.models.Questions"
+            app:nullable="false" />
+        <argument
+            android:name="answers"
+            app:argType="kulloveth.developer.com.braintest.data.models.Questions"
+            app:nullable="false" />
+    </fragment>
 </navigation>

@@ -6,22 +6,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.answer_item_layout.view.*
+import kotlinx.android.synthetic.main.rv_item_layout.view.*
 import kulloveth.developer.com.braintest.R
-import kulloveth.developer.com.braintest.data.models.Answers
+import kulloveth.developer.com.braintest.data.models.Questions
 
-class QuestionsAdapter : ListAdapter<Answers, QuestionsAdapter.MainViewHolder>(
+class GamesAdapter : ListAdapter<Questions, GamesAdapter.MainViewHolder>(
     DiffCallback()
 ) {
     lateinit var mItemCLicked: ItemCLickedListener
 
 
-    class DiffCallback : DiffUtil.ItemCallback<Answers>() {
-        override fun areItemsTheSame(oldItem: Answers, newItem: Answers): Boolean {
+    class DiffCallback : DiffUtil.ItemCallback<Questions>() {
+        override fun areItemsTheSame(oldItem: Questions, newItem: Questions): Boolean {
             return oldItem._id == newItem._id
         }
 
-        override fun areContentsTheSame(oldItem: Answers, newItem: Answers): Boolean {
+        override fun areContentsTheSame(oldItem: Questions, newItem: Questions): Boolean {
             return oldItem._id == newItem._id
         }
 
@@ -29,7 +29,7 @@ class QuestionsAdapter : ListAdapter<Answers, QuestionsAdapter.MainViewHolder>(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.answer_item_layout, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.rv_item_layout, parent, false)
         return MainViewHolder(
             view
         )
@@ -53,13 +53,13 @@ class QuestionsAdapter : ListAdapter<Answers, QuestionsAdapter.MainViewHolder>(
 
     class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(answers: Answers) {
-            itemView.answers.text = answers.option
+        fun bind(questions: Questions) {
+            itemView.question.text = questions.question
         }
     }
 
     interface ItemCLickedListener {
-        fun onItemClicked(answers: Answers)
+        fun onItemClicked(questions: Questions)
     }
 
 }

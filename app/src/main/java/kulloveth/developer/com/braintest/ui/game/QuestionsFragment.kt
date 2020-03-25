@@ -7,15 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_game.*
+import kotlinx.android.synthetic.main.fragment_game.recycler
 import kotlinx.android.synthetic.main.fragment_questions.*
 import kulloveth.developer.com.braintest.R
-import kulloveth.developer.com.braintest.data.models.Questions
-import kulloveth.developer.com.braintest.data.models.Quiz
+import kulloveth.developer.com.braintest.data.models.Answers
 
 /**
  * A simple [Fragment] subclass.
  */
 class QuestionsFragment : Fragment() {
+    var answers: ArrayList<Answers>? = null
+    var question: String? = null
+    private lateinit var adapter: QuestionsAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        answers = arguments?.getParcelableArrayList<Answers>("answers")
+        question = arguments?.getString("question")
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +37,16 @@ class QuestionsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_questions, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recycler.layoutManager = LinearLayoutManager(requireActivity())
+        adapter = QuestionsAdapter()
+        recycler.adapter = adapter
+        questions.text = question
+        adapter.submitList(answers)
+
+
+    }
 
 
 }
