@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.answer_item_layout.view.*
 import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.models.Answers
 
-class QuestionsAdapter : ListAdapter<Answers, QuestionsAdapter.MainViewHolder>(
+class AnswersAdapter : ListAdapter<Answers, AnswersAdapter.MainViewHolder>(
     DiffCallback()
 ) {
     lateinit var mItemCLicked: ItemCLickedListener

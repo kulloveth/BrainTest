@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.android.synthetic.main.fragment_game.recycler
 import kotlinx.android.synthetic.main.fragment_questions.*
 import kulloveth.developer.com.braintest.R
@@ -16,10 +15,10 @@ import kulloveth.developer.com.braintest.data.models.Answers
 /**
  * A simple [Fragment] subclass.
  */
-class QuestionsFragment : Fragment() {
+class AnswersFragment : Fragment() {
     var answers: ArrayList<Answers>? = null
     var question: String? = null
-    private lateinit var adapter: QuestionsAdapter
+    private lateinit var adapter: AnswersAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +39,7 @@ class QuestionsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recycler.layoutManager = LinearLayoutManager(requireActivity())
-        adapter = QuestionsAdapter()
+        adapter = AnswersAdapter()
         recycler.adapter = adapter
         questions.text = question
         adapter.submitList(answers)

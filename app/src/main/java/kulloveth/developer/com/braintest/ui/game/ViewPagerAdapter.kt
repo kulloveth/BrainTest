@@ -3,7 +3,6 @@ package kulloveth.developer.com.braintest.ui.game
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import kulloveth.developer.com.braintest.data.models.Questions
-import kulloveth.developer.com.braintest.data.models.Quiz
 
 
 class ViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
@@ -17,7 +16,7 @@ class ViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     }
 
     override fun createFragment(position: Int): Fragment {
-        return QuestionsFragment()
+        return AnswersFragment()
     }
 
 
