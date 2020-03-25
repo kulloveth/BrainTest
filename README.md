@@ -22,5 +22,18 @@ A Quiz app to test your knowledge of things happening around the world
 ![Questions](https://github.com/kulloveth/BrainTest/blob/master/app/screenshots/questions.png)
 
 </td>
+
+<td>
+   
+![Options](https://github.com/kulloveth/BrainTest/blob/master/app/screenshots/options.png)
+
+</td>
+</tr>
+<tr>
+<td>
+   
+![Right Answer](https://github.com/kulloveth/BrainTest/blob/master/app/screenshots/right.png)
+
+</td>
 </tr>
 </table>
