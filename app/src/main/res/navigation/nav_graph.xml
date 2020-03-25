@@ -65,7 +65,7 @@
         android:id="@+id/questionsFragment"
         android:name="kulloveth.developer.com.braintest.ui.game.AnswersFragment"
         android:label="fragment_questions"
-        tools:layout="@layout/fragment_questions">
+        tools:layout="@layout/fragment_answers">
         <argument
             android:name="question"
             app:argType="kulloveth.developer.com.braintest.data.models.Questions"

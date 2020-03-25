@@ -1,5 +1,6 @@
 package kulloveth.developer.com.braintest.ui.game
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,7 @@ class AnswersAdapter : ListAdapter<Answers, AnswersAdapter.MainViewHolder>(
         holder.itemView.setOnClickListener {
             mItemCLicked.let {
                 mItemCLicked.onItemClicked(getItem(position))
+
             }
 
         }
@@ -55,6 +57,13 @@ class AnswersAdapter : ListAdapter<Answers, AnswersAdapter.MainViewHolder>(
 
         fun bind(answers: Answers) {
             itemView.answers.text = answers.option
+            itemView.answers.setOnClickListener {
+                if(answers.value){
+                    itemView.answers.setBackgroundColor(Color.GREEN)
+                }else{
+                    itemView.answers.setBackgroundColor(Color.RED)
+                }
+            }
         }
     }
 

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_game.recycler
-import kotlinx.android.synthetic.main.fragment_questions.*
+import kotlinx.android.synthetic.main.fragment_answers.*
 import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.models.Answers
 
@@ -33,7 +33,7 @@ class AnswersFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_questions, container, false)
+        return inflater.inflate(R.layout.fragment_answers, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,6 +43,13 @@ class AnswersFragment : Fragment() {
         recycler.adapter = adapter
         questions.text = question
         adapter.submitList(answers)
+        adapter.setUpListener(object : AnswersAdapter.ItemCLickedListener{
+            override fun onItemClicked(answers: Answers) {
+                if(answers.value){
+
+                }
+            }
+        })
 
 
     }
