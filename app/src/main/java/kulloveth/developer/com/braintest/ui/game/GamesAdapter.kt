@@ -3,9 +3,11 @@ package kulloveth.developer.com.braintest.ui.game
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.rv_item_layout.view.*
 import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.models.Questions
@@ -55,11 +57,35 @@ class GamesAdapter : ListAdapter<Questions, GamesAdapter.MainViewHolder>(
 
         fun bind(questions: Questions) {
             itemView.question.text = questions.question
+            for (option in questions.answers) {
+                val rb = RadioButton(itemView.context)
+                rb.id = option._id
+                rb.text = option.option
+                itemView.optionGroup.addView(rb)
+                itemView.optionGroup.setOnCheckedChangeListener { group, checkedId ->
+
+                }
+                if (option.value) {
+                    Snackbar.make(itemView, "corect answer", Snackbar.LENGTH_SHORT)
+                } else {
+                    Snackbar.make(itemView, "incorrect answer", Snackbar.LENGTH_SHORT)
+                }
+            }
+
         }
     }
 
     interface ItemCLickedListener {
         fun onItemClicked(questions: Questions)
     }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
 
 }

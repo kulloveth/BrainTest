@@ -10,14 +10,7 @@ import kulloveth.developer.com.braintest.data.repository.UserRepository
 
 class GameViewModel(val repository: UserRepository) : ViewModel() {
 
-    var count = 0
-    var oCount = 0
-    var result = 0
-    var quest: String? = null
-    var optionO: String? = null
-    var optionT: String? = null
-    var optionTh: String? = null
-    var optionF: String? = null
+
     fun fetchquiz(): LiveData<Quiz> {
         return repository.quizLiveData
     }
@@ -27,8 +20,9 @@ class GameViewModel(val repository: UserRepository) : ViewModel() {
     }
 
     fun signOut(view: View) {
-        repository.signOutUser()
         view.findNavController().navigate(R.id.action_gameFragment_to_chooseSignInMethodFragment)
+        repository.signOutUser()
+
     }
 
 
