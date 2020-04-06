@@ -9,20 +9,20 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.answer_item_layout.view.*
 import kulloveth.developer.com.braintest.R
-import kulloveth.developer.com.braintest.data.models.Answers
+import kulloveth.developer.com.braintest.data.models.Answer
 
-class AnswersAdapter : ListAdapter<Answers, AnswersAdapter.MainViewHolder>(
+class AnswersAdapter : ListAdapter<Answer, AnswersAdapter.MainViewHolder>(
     DiffCallback()
 ) {
     lateinit var mItemCLicked: ItemCLickedListener
 
 
-    class DiffCallback : DiffUtil.ItemCallback<Answers>() {
-        override fun areItemsTheSame(oldItem: Answers, newItem: Answers): Boolean {
+    class DiffCallback : DiffUtil.ItemCallback<Answer>() {
+        override fun areItemsTheSame(oldItem: Answer, newItem: Answer): Boolean {
             return oldItem._id == newItem._id
         }
 
-        override fun areContentsTheSame(oldItem: Answers, newItem: Answers): Boolean {
+        override fun areContentsTheSame(oldItem: Answer, newItem: Answer): Boolean {
             return oldItem._id == newItem._id
         }
 
@@ -55,7 +55,7 @@ class AnswersAdapter : ListAdapter<Answers, AnswersAdapter.MainViewHolder>(
 
     class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(answers: Answers) {
+        fun bind(answers: Answer) {
             itemView.answers.text = answers.option
             itemView.answers.setOnClickListener {
                 if(answers.value){
@@ -68,7 +68,7 @@ class AnswersAdapter : ListAdapter<Answers, AnswersAdapter.MainViewHolder>(
     }
 
     interface ItemCLickedListener {
-        fun onItemClicked(answers: Answers)
+        fun onItemClicked(answers: Answer)
     }
 
 }

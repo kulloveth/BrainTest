@@ -1,29 +1,27 @@
 package kulloveth.developer.com.braintest.ui.game
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.rv_item_layout.view.*
 import kulloveth.developer.com.braintest.R
-import kulloveth.developer.com.braintest.data.models.Questions
+import kulloveth.developer.com.braintest.data.models.Question
 
-class GamesAdapter : ListAdapter<Questions, GamesAdapter.MainViewHolder>(
+class GamesAdapter : ListAdapter<Question, GamesAdapter.MainViewHolder>(
     DiffCallback()
 ) {
     lateinit var mItemCLicked: ItemCLickedListener
 
-
-    class DiffCallback : DiffUtil.ItemCallback<Questions>() {
-        override fun areItemsTheSame(oldItem: Questions, newItem: Questions): Boolean {
+    class DiffCallback : DiffUtil.ItemCallback<Question>() {
+        override fun areItemsTheSame(oldItem: Question, newItem: Question): Boolean {
             return oldItem._id == newItem._id
         }
 
-        override fun areContentsTheSame(oldItem: Questions, newItem: Questions): Boolean {
+        override fun areContentsTheSame(oldItem: Question, newItem: Question): Boolean {
             return oldItem._id == newItem._id
         }
 
@@ -38,54 +36,88 @@ class GamesAdapter : ListAdapter<Questions, GamesAdapter.MainViewHolder>(
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bind(getItem(position))
-        holder.itemView.setOnClickListener {
-            mItemCLicked.let {
-                mItemCLicked.onItemClicked(getItem(position))
+        var questions: Question = getItem(position)
+        when (position) {
+            0 -> {
+                holder.itemView.option.check(R.id.optioneOne)
+
             }
+            1 -> {
+                holder.itemView.option.check(R.id.optioneTwo)
 
+            }
+            2 -> {
+                holder.itemView.option.check(R.id.optioneThree)
+
+            }
+            3 -> {
+                holder.itemView.option.check(R.id.optioneFour)
+
+            }
+            else -> {
+                holder.itemView.option.clearCheck()
+            }
         }
+        holder.itemView.question.text = questions.question
+        val count = 0
+
+        holder.itemView.optioneOne.text = questions.answers[count].option
+        holder.itemView.optioneTwo.text = questions.answers[count + 1].option
+        holder.itemView.optioneThree.text = questions.answers[count + 2].option
+        holder.itemView.optioneFour.text = questions.answers[count + 3].option
 
 
-    }
+        // val rbSelected: RadioButton = itemView.findViewById(itemView.option.checkedRadioButtonId)
 
-    fun setUpListener(itemCLicked: ItemCLickedListener) {
-        mItemCLicked = itemCLicked
-    }
 
-    class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        holder.itemView.option.setOnCheckedChangeListener { group, checkedId ->
+            Log.d( "check", "I'm in the check change" )
+            var isCorrect = false
+                when (checkedId) {
+                    R.id.optioneOne -> {
+                        isCorrect = questions.answers[count].value
+                        Log.d("answer1", "$isCorrect")
+                    }
 
-        fun bind(questions: Questions) {
-            itemView.question.text = questions.question
-            for (option in questions.answers) {
-                val rb = RadioButton(itemView.context)
-                rb.id = option._id
-                rb.text = option.option
-                itemView.optionGroup.addView(rb)
-                itemView.optionGroup.setOnCheckedChangeListener { group, checkedId ->
+                    R.id.optioneTwo -> {
+                        isCorrect = questions.answers[count + 1].value
+                        Log.d("answer2", " $isCorrect")
+                    }
+
+                    R.id.optioneThree -> {
+                        isCorrect = questions.answers[count + 2].value
+                        Log.d("answer3", " $isCorrect")
+                    }
+
+                    R.id.optioneFour -> {
+                        isCorrect = questions.answers[count + 3].value
+
+                        Log.d("answer4", " ${isCorrect}")
+                    }
 
                 }
-                if (option.value) {
-                    Snackbar.make(itemView, "corect answer", Snackbar.LENGTH_SHORT)
-                } else {
-                    Snackbar.make(itemView, "incorrect answer", Snackbar.LENGTH_SHORT)
-                }
+
+                mItemCLicked.onItemClicked(isCorrect)
+
+
             }
 
-        }
-    }
 
-    interface ItemCLickedListener {
-        fun onItemClicked(questions: Questions)
-    }
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
 
-    override fun getItemViewType(position: Int): Int {
-        return position
-    }
+
+
+}
+
+fun setUpListener(itemCLicked: ItemCLickedListener) {
+    mItemCLicked = itemCLicked
+}
+
+class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+interface ItemCLickedListener {
+    fun onItemClicked(isCorrect: Boolean)
+}
 
 
 }

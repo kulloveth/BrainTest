@@ -10,5 +10,5 @@ data class Quiz(
     val id: String,
 
     @SerializedName("questions")
-    val questions: List<Questions>
+    val questions: List<Question>
 ) : Parcelable

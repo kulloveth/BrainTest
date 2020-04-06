@@ -6,8 +6,9 @@ import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
 @Parcelize
-data class Answers(
+data class Answer(
     val _id:Int,
     @SerializedName("option") val option: String,
-    @SerializedName("value") val value: Boolean
+    @SerializedName("value") val value: Boolean,
+    val isSelected:Boolean = false
 ) : Parcelable

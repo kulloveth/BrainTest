@@ -10,19 +10,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_game.recycler
 import kotlinx.android.synthetic.main.fragment_answers.*
 import kulloveth.developer.com.braintest.R
-import kulloveth.developer.com.braintest.data.models.Answers
+import kulloveth.developer.com.braintest.data.models.Answer
 
 /**
  * A simple [Fragment] subclass.
  */
 class AnswersFragment : Fragment() {
-    var answers: ArrayList<Answers>? = null
+    var answers: ArrayList<Answer>? = null
     var question: String? = null
     private lateinit var adapter: AnswersAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        answers = arguments?.getParcelableArrayList<Answers>("answers")
+        answers = arguments?.getParcelableArrayList<Answer>("answers")
         question = arguments?.getString("question")
 
     }
@@ -44,7 +44,7 @@ class AnswersFragment : Fragment() {
         questions.text = question
         adapter.submitList(answers)
         adapter.setUpListener(object : AnswersAdapter.ItemCLickedListener{
-            override fun onItemClicked(answers: Answers) {
+            override fun onItemClicked(answers: Answer) {
                 if(answers.value){
 
                 }

@@ -68,11 +68,11 @@
         tools:layout="@layout/fragment_answers">
         <argument
             android:name="question"
-            app:argType="kulloveth.developer.com.braintest.data.models.Questions"
+            app:argType="kulloveth.developer.com.braintest.data.models.Question"
             app:nullable="false" />
         <argument
             android:name="answers"
-            app:argType="kulloveth.developer.com.braintest.data.models.Questions"
+            app:argType="kulloveth.developer.com.braintest.data.models.Question"
             app:nullable="false" />
     </fragment>
 </navigation>
