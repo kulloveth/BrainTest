@@ -49,10 +49,9 @@ class GameFragment : Fragment() {
         viewPagerAdapter = ViewPagerAdapter(this)
         viewpager2.adapter = viewPagerAdapter
         TabLayoutMediator(tabLayout, viewpager2) { tab, position ->
-//            when (position) {
-//                0 -> tab.text = "Question" + position
-//                1 -> tab.text = "Languages"
-//            }
+              val questionNo = position + 1
+              tab.text = "Question$questionNo"
+
 
         }.attach()
         setupQuiz()
