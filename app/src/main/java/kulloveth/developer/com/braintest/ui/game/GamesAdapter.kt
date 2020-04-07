@@ -71,53 +71,49 @@ class GamesAdapter : ListAdapter<Question, GamesAdapter.MainViewHolder>(
 
 
         holder.itemView.option.setOnCheckedChangeListener { group, checkedId ->
-            Log.d( "check", "I'm in the check change" )
+            Log.d("check", "I'm in the check change")
             var isCorrect = false
-                when (checkedId) {
-                    R.id.optioneOne -> {
-                        isCorrect = questions.answers[count].value
-                        Log.d("answer1", "$isCorrect")
-                    }
-
-                    R.id.optioneTwo -> {
-                        isCorrect = questions.answers[count + 1].value
-                        Log.d("answer2", " $isCorrect")
-                    }
-
-                    R.id.optioneThree -> {
-                        isCorrect = questions.answers[count + 2].value
-                        Log.d("answer3", " $isCorrect")
-                    }
-
-                    R.id.optioneFour -> {
-                        isCorrect = questions.answers[count + 3].value
-
-                        Log.d("answer4", " ${isCorrect}")
-                    }
-
+            when (checkedId) {
+                R.id.optioneOne -> {
+                    isCorrect = questions.answers[count].value
+                    Log.d("answer1", "$isCorrect")
                 }
 
-                mItemCLicked.onItemClicked(isCorrect)
+                R.id.optioneTwo -> {
+                    isCorrect = questions.answers[count + 1].value
+                    Log.d("answer2", " $isCorrect")
+                }
 
+                R.id.optioneThree -> {
+                    isCorrect = questions.answers[count + 2].value
+                    Log.d("answer3", " $isCorrect")
+                }
+
+                R.id.optioneFour -> {
+                    isCorrect = questions.answers[count + 3].value
+
+                    Log.d("answer4", " ${isCorrect}")
+                }
 
             }
 
+            mItemCLicked.onItemClicked(isCorrect)
 
 
+        }
 
 
+    }
 
-}
+    fun setUpListener(itemCLicked: ItemCLickedListener) {
+        mItemCLicked = itemCLicked
+    }
 
-fun setUpListener(itemCLicked: ItemCLickedListener) {
-    mItemCLicked = itemCLicked
-}
+    class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
-interface ItemCLickedListener {
-    fun onItemClicked(isCorrect: Boolean)
-}
+    interface ItemCLickedListener {
+        fun onItemClicked(isCorrect: Boolean)
+    }
 
 
 }

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_game.*
 import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.models.Answer
@@ -25,6 +26,7 @@ class GameFragment : Fragment() {
     private lateinit var viewModel: GameViewModel
     private lateinit var binding: FragmentGameBinding
     private lateinit var adapter: GamesAdapter
+    private lateinit var viewPagerAdapter: ViewPagerAdapter
 
 
     override fun onCreateView(
@@ -44,11 +46,16 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recycler.layoutManager = LinearLayoutManager(requireActivity())
-        adapter = GamesAdapter()
-        recycler.adapter = adapter
-        setupQuiz()
+        viewPagerAdapter = ViewPagerAdapter(this)
+        viewpager2.adapter = viewPagerAdapter
+        TabLayoutMediator(tabLayout, viewpager2) { tab, position ->
+//            when (position) {
+//                0 -> tab.text = "Question" + position
+//                1 -> tab.text = "Languages"
+//            }
 
+        }.attach()
+        setupQuiz()
     }
 
     fun timer() {
@@ -64,24 +71,13 @@ class GameFragment : Fragment() {
             }
         }.start()
     }
-
     fun setupQuiz() {
 
         activity.let {
             viewModel.fetchquiz().observe(this, Observer {
-                adapter.submitList(it.questions)
+                viewPagerAdapter.setData(it.questions)
             })
 
-            adapter.setUpListener(object : GamesAdapter.ItemCLickedListener {
-                override fun onItemClicked(isCorrect: Boolean) {
-                    val message = if (isCorrect) {
-                       "correct"
-                   }else {"wrong"}
-                        Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
-                    }
-
-
-            })
         }
 
 
