@@ -6,17 +6,17 @@ import kulloveth.developer.com.braintest.data.models.Question
 
 
 class ViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
-    val arrayList: ArrayList<Question> = ArrayList()
+    private val arrayList: ArrayList<Question> = ArrayList()
     override fun getItemCount(): Int = arrayList.size
 
 
-    fun setData(quiz: List<Question>) {
-        arrayList.addAll(quiz)
+    fun setData(questions: List<Question>) {
+        arrayList.addAll(questions)
         notifyDataSetChanged()
     }
 
     override fun createFragment(position: Int): Fragment {
-        return AnswersFragment.newInstance(arrayList[position])
+        return QuestionFragment.newInstance(arrayList[position])
     }
 
 

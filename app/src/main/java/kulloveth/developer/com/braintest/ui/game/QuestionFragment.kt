@@ -7,26 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_answers.*
+import kotlinx.android.synthetic.main.fragment_question.*
 import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.models.Answer
 import kulloveth.developer.com.braintest.data.models.Question
-import kulloveth.developer.com.braintest.data.models.Quiz
 import kulloveth.developer.com.braintest.data.repository.UserRepository
 
 /**
  * A simple [Fragment] subclass.
  */
-class AnswersFragment : Fragment() {
+class QuestionFragment : Fragment() {
     var answers: ArrayList<Answer>? = null
     var question: Question? = null
     private lateinit var factory: GameViewModelFactory
     var repository = UserRepository()
     private lateinit var viewModel: GameViewModel
-    private lateinit var adapter: GamesAdapter
+    private lateinit var adapter: QuestionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,23 +45,25 @@ class AnswersFragment : Fragment() {
         viewModel = ViewModelProvider(this, factory).get(GameViewModel::class.java)
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_answers, container, false)
+        return inflater.inflate(R.layout.fragment_question, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recycler.layoutManager = LinearLayoutManager(requireActivity())
-        adapter = GamesAdapter()
+        adapter = QuestionAdapter()
         recycler.adapter = adapter
         val questions = ArrayList<Question>()
         questions.add(question!!)
         adapter.submitList(questions)
 
-        adapter.setUpListener(object : GamesAdapter.ItemCLickedListener {
+        adapter.setUpListener(object : QuestionAdapter.ItemCLickedListener {
             override fun onItemClicked(isCorrect: Boolean) {
                 val message = if (isCorrect) {
                     "correct"
-                }else {"wrong"}
+                } else {
+                    "wrong"
+                }
                 Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
             }
 
@@ -74,14 +74,12 @@ class AnswersFragment : Fragment() {
     }
 
 
-
-
-    companion object{
-        const val QUESTION_DATA="QUESTION-DATA"
-        fun newInstance(question: Question):Fragment{
-            val answersFragment = AnswersFragment()
+    companion object {
+        const val QUESTION_DATA = "QUESTION-DATA"
+        fun newInstance(question: Question): Fragment {
+            val answersFragment = QuestionFragment()
             val bundle = Bundle()
-            bundle.putParcelable(QUESTION_DATA,question)
+            bundle.putParcelable(QUESTION_DATA, question)
             answersFragment.arguments = bundle
             return answersFragment
         }

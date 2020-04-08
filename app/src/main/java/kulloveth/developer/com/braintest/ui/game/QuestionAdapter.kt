@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.rv_item_layout.view.*
 import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.models.Question
 
-class GamesAdapter : ListAdapter<Question, GamesAdapter.MainViewHolder>(
+class QuestionAdapter : ListAdapter<Question, QuestionAdapter.MainViewHolder>(
     DiffCallback()
 ) {
     lateinit var mItemCLicked: ItemCLickedListener

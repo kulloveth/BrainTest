@@ -63,9 +63,9 @@
         tools:layout="@layout/fragment_quiz_summary" />
     <fragment
         android:id="@+id/questionsFragment"
-        android:name="kulloveth.developer.com.braintest.ui.game.AnswersFragment"
+        android:name="kulloveth.developer.com.braintest.ui.game.QuestionFragment"
         android:label="fragment_questions"
-        tools:layout="@layout/fragment_answers">
+        tools:layout="@layout/fragment_question">
         <argument
             android:name="question"
             app:argType="kulloveth.developer.com.braintest.data.models.Question"
