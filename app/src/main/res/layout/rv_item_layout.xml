@@ -31,18 +31,22 @@
             app:layout_constraintTop_toBottomOf="@id/question">
             <RadioButton
                 android:id="@+id/optioneOne"
+                android:checked="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <RadioButton
+                android:checked="false"
                 android:id="@+id/optioneTwo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <RadioButton
+                android:checked="false"
                 android:id="@+id/optioneThree"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <RadioButton
+                android:checked="false"
                 android:id="@+id/optioneFour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
