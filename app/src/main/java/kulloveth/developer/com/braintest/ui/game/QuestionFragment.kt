@@ -21,6 +21,7 @@ import kulloveth.developer.com.braintest.data.repository.UserRepository
 class QuestionFragment : Fragment() {
     var answers: ArrayList<Answer>? = null
     var question: Question? = null
+    var score = 0
     private lateinit var factory: GameViewModelFactory
     var repository = UserRepository()
     private lateinit var viewModel: GameViewModel
@@ -59,12 +60,12 @@ class QuestionFragment : Fragment() {
 
         adapter.setUpListener(object : QuestionAdapter.ItemCLickedListener {
             override fun onItemClicked(isCorrect: Boolean) {
-                val message = if (isCorrect) {
-                    "correct"
+            if (isCorrect) {
+                    score += 1
                 } else {
-                    "wrong"
+                   score -= 1
                 }
-                Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
+                viewModel.setScoreLiveData(score)
             }
 
 
