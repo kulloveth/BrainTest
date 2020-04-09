@@ -65,7 +65,10 @@ class QuestionFragment : Fragment() {
                 } else {
                    score -= 1
                 }
-                viewModel.setScoreLiveData(score)
+                activity.let {
+                    viewModel.setScoreLiveData(score)
+                }
+
             }
 
 

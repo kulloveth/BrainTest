@@ -60,6 +60,13 @@ class GameFragment : Fragment() {
         }.attach()
         setupQuiz()
         resetGame()
+        activity.let {
+            viewModel.getScoreLiveData().observe(viewLifecycleOwner, Observer {
+                gameScore.text = it.toString()
+            })
+
+        }
+
     }
 
     fun resetGame() {
