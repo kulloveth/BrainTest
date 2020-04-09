@@ -43,7 +43,10 @@ class QuestionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         factory = GameViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, factory).get(GameViewModel::class.java)
+        activity.let {
+            viewModel = ViewModelProvider(requireActivity(), factory).get(GameViewModel::class.java)
+        }
+
         // Inflate the layout for this fragment
 
         return inflater.inflate(R.layout.fragment_question, container, false)
@@ -61,9 +64,9 @@ class QuestionFragment : Fragment() {
         adapter.setUpListener(object : QuestionAdapter.ItemCLickedListener {
             override fun onItemClicked(isCorrect: Boolean) {
             if (isCorrect) {
-                    score += 1
+                    score ++
                 } else {
-                   score -= 1
+                   score --
                 }
                 activity.let {
                     viewModel.setScoreLiveData(score)

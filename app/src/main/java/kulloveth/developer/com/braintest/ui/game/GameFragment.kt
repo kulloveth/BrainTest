@@ -36,7 +36,10 @@ class GameFragment : Fragment() {
     ): View? {
         factory = GameViewModelFactory(repository)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_game, container, false)
-        viewModel = ViewModelProvider(this, factory).get(GameViewModel::class.java)
+        activity.let {
+            viewModel = ViewModelProvider(requireActivity(), factory).get(GameViewModel::class.java)
+        }
+
 
 
 //        if(!gameStarted){
@@ -82,7 +85,7 @@ class GameFragment : Fragment() {
             }
 
             override fun onFinish() {
-                endGame()
+                //endGame()
             }
         }.start()
         gameStarted = false
