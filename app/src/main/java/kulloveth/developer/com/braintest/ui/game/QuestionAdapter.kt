@@ -73,6 +73,8 @@ class QuestionAdapter : ListAdapter<Question, QuestionAdapter.MainViewHolder>(
         holder.itemView.option.setOnCheckedChangeListener { group, checkedId ->
             Log.d("check", "I'm in the check change")
             var isCorrect = false
+            var score = 0
+
             when (checkedId) {
                 R.id.optioneOne -> {
                     isCorrect = questions.answers[count].value

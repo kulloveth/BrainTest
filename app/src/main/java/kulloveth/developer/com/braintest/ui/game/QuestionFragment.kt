@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +13,8 @@ import kulloveth.developer.com.braintest.R
 import kulloveth.developer.com.braintest.data.models.Answer
 import kulloveth.developer.com.braintest.data.models.Question
 import kulloveth.developer.com.braintest.data.repository.UserRepository
+import kulloveth.developer.com.braintest.utils.addScorePreferences
+import kulloveth.developer.com.braintest.utils.getSharedPreferencesValue
 
 /**
  * A simple [Fragment] subclass.
@@ -57,19 +58,21 @@ class QuestionFragment : Fragment() {
         recycler.layoutManager = LinearLayoutManager(requireActivity())
         adapter = QuestionAdapter()
         recycler.adapter = adapter
+        activity.let {
+            viewModel.setScoreLiveData(getSharedPreferencesValue(requireActivity(), "SCORE"))
+        }
         val questions = ArrayList<Question>()
         questions.add(question!!)
         adapter.submitList(questions)
 
         adapter.setUpListener(object : QuestionAdapter.ItemCLickedListener {
             override fun onItemClicked(isCorrect: Boolean) {
-            if (isCorrect) {
-                    score ++
+                if (isCorrect) {
+                    score = getSharedPreferencesValue(requireActivity(), "SCORE")
+                    addScorePreferences(requireActivity(), score.plus(1))
                 } else {
-                   score --
-                }
-                activity.let {
-                    viewModel.setScoreLiveData(score)
+                    score = getSharedPreferencesValue(requireActivity(), "SCORE")
+                    addScorePreferences(requireActivity(), score.minus(1))
                 }
 
             }
@@ -77,10 +80,7 @@ class QuestionFragment : Fragment() {
 
         })
 
-
     }
-
-
     companion object {
         const val QUESTION_DATA = "QUESTION-DATA"
         fun newInstance(question: Question): Fragment {
