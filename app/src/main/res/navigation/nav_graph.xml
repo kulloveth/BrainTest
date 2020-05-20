@@ -12,10 +12,14 @@
         tools:layout="@layout/fragment_choose_sign_in_method">
         <action
             android:id="@+id/action_chooseSignInMethodFragment_to_emailSignIn"
-            app:destination="@id/emailSignIn" />
+            app:destination="@id/emailSignIn"
+            app:popUpTo="@+id/chooseSignInMethodFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_chooseSignInMethodFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            app:destination="@id/gameFragment"
+            app:popUpTo="@+id/chooseSignInMethodFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/emailSignIn"
@@ -27,7 +31,9 @@
             app:destination="@id/emailSignUp" />
         <action
             android:id="@+id/action_emailSignIn_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            app:destination="@id/gameFragment"
+            app:popUpTo="@+id/emailSignIn"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/emailSignUp"
@@ -39,7 +45,9 @@
             app:destination="@id/emailSignIn" />
         <action
             android:id="@+id/action_emailSignUp_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            app:destination="@id/gameFragment"
+            app:popUpTo="@+id/emailSignUp"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -54,7 +62,9 @@
             app:destination="@id/chooseSignInMethodFragment" />
         <action
             android:id="@+id/action_gameFragment_to_questionsFragment"
-            app:destination="@id/questionsFragment" />
+            app:destination="@id/questionsFragment"
+            app:popUpTo="@+id/gameFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <dialog
         android:id="@+id/quizSummaryFragment"
@@ -74,5 +84,8 @@
             android:name="answers"
             app:argType="kulloveth.developer.com.braintest.data.models.Question"
             app:nullable="false" />
+        <action
+            android:id="@+id/action_questionsFragment_to_quizSummaryFragment"
+            app:destination="@id/quizSummaryFragment" />
     </fragment>
 </navigation>

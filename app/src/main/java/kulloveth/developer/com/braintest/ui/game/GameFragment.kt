@@ -74,7 +74,6 @@ class GameFragment : Fragment() {
 
     fun resetGame() {
         score = 0
-        gameScore.text = getString(R.string.game_score, score)
         val initialTimeLeft = timeRemaining / initialCountdown
         timer.text = getString(R.string.timer, initialTimeLeft)
         countDownTimer = object : CountDownTimer(timeRemaining, initialCountdown) {
