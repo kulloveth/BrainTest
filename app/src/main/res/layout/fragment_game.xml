@@ -62,25 +62,25 @@
             android:id="@+id/gameScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_16dp"
             android:layout_marginStart="@dimen/dimens_16dp"
+            android:layout_marginTop="@dimen/dimens_16dp"
             android:text="@string/game_score"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appbar" />
 
-                <TextView
-                    android:id="@+id/timer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_16dp"
-                    android:layout_marginEnd="@dimen/dimens_16dp"
-                    android:text="@string/timer"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@id/guideline"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/appbar" />
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_16dp"
+            android:layout_marginEnd="@dimen/dimens_16dp"
+            android:text="@{viewmodel.currentTimeString}"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"

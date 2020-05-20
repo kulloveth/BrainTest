@@ -21,13 +21,11 @@ class GameFragment : Fragment() {
     private lateinit var factory: GameViewModelFactory
     var repository = UserRepository()
     private lateinit var viewModel: GameViewModel
-    internal lateinit var countDownTimer: CountDownTimer
     internal var gameStarted = false
     private lateinit var binding: FragmentGameBinding
     private lateinit var viewPagerAdapter: ViewPagerAdapter
     var score = 0
-    var timeRemaining: Long = 30000
-    var initialCountdown: Long = 1000
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,14 +38,8 @@ class GameFragment : Fragment() {
             viewModel = ViewModelProvider(requireActivity(), factory).get(GameViewModel::class.java)
         }
 
-
-
-//        if(!gameStarted){
-//            countDownTimer.start()
-//            gameStarted = true
-//        }
-        //setupQuiz()
         binding.viewmodel = viewModel
+        binding.lifecycleOwner = this
         return binding.root
     }
 
@@ -74,19 +66,7 @@ class GameFragment : Fragment() {
 
     fun resetGame() {
         score = 0
-        val initialTimeLeft = timeRemaining / initialCountdown
-        timer.text = getString(R.string.timer, initialTimeLeft)
-        countDownTimer = object : CountDownTimer(timeRemaining, initialCountdown) {
-            override fun onTick(millisUntilFinished: Long) {
-                timeRemaining = millisUntilFinished
-                val timeleft = millisUntilFinished / initialCountdown
-                timer.text = getString(R.string.timer, timeleft)
-            }
 
-            override fun onFinish() {
-                //endGame()
-            }
-        }.start()
         gameStarted = false
     }
 
